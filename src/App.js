@@ -1,12 +1,14 @@
 import "./styles.css";
 import { Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
+import Continents from "./pages/Continents";
+import Countries from "./pages/Countries";
 
 export default function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Continents />} />
+        <Route path="/:continentName" element={<Countries />} />
       </Routes>
     </div>
   );

@@ -1,25 +1,25 @@
-import { createContext, useEffect, useReducer } from "react";
-import { DataReducer } from "../reducer/DataReducer";
-import { appData } from "../data/data";
+import { createContext, useContext, useState } from "react";
+import { data } from "../data/data";
 
 export const DataContext = createContext();
 
 export const DataProvider = ({ children }) => {
-  const Data = appData;
+  const continents = data.continents;
 
-  const [state, dispatch] = useReducer(DataReducer, Data);
-
-  const fetchData = () => {
-    dispatch({ type: "InitialDataFetch", payload: Data });
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
+  const [location, setLocation] = useState({
+    currentContinent: "",
+    allContinents: continents,
+    currentCountry: "",
+    allCountries: [],
+    currentDestination: "",
+    allDestinations: [],
+  });
 
   return (
-    <DataContext.Provider value={{ state, dispatch }}>
+    <DataContext.Provider value={{ location, setLocation }}>
       {children}
     </DataContext.Provider>
   );
 };
+
+export const useData = () => useContext(DataContext);
