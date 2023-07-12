@@ -6,7 +6,7 @@ export const DataContext = createContext();
 export const DataProvider = ({ children }) => {
   const continents = data.continents;
 
-  const [location, setLocation] = useState({
+  const [currentState, setCurrentState] = useState({
     currentContinent: "",
     allContinents: continents,
     currentCountry: "",
@@ -16,7 +16,7 @@ export const DataProvider = ({ children }) => {
   });
 
   return (
-    <DataContext.Provider value={{ location, setLocation }}>
+    <DataContext.Provider value={{ currentState, setCurrentState }}>
       {children}
     </DataContext.Provider>
   );

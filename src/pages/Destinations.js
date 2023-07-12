@@ -3,28 +3,28 @@ import { LocationCard } from "../components/LocationCard";
 import { useNavigate } from "react-router-dom";
 
 export default function Destinations() {
-  const { location, setLocation } = useData();
+  const { currentState, setCurrentState } = useData();
   const navigate = useNavigate();
-  console.log(location);
+  console.log(currentState);
 
   return (
     <div>
       <div className="text-3xl items-center text-center m-5">
         <p className="font-medium text-xl mb-2">
-          Top cities in {location?.currentCountry?.name} for your next Holiday{" "}
+          Top cities in {currentState?.currentCountry?.name} for your next
+          Holiday{" "}
         </p>
       </div>
 
       <div className="grid grid-cols-3 gap-4">
-        {location.allDestinations?.map((destination) => (
+        {currentState.allDestinations?.map((destination) => (
           <div
             key={destination?.id}
             onClick={() => {
               navigate(`${destination.name}`);
-              setLocation({
-                ...location,
-                currentCountry: destination,
-                allDestinations: [destination?.destinations],
+              setCurrentState({
+                ...currentState,
+                currentDestination: destination,
               });
             }}>
             <p>{destination.name}</p>

@@ -3,7 +3,7 @@ import { LocationCard } from "../components/LocationCard";
 import { useNavigate } from "react-router-dom";
 
 export default function Continents() {
-  const { location, setLocation } = useData();
+  const { currentState, setCurrentState } = useData();
   const navigate = useNavigate();
 
   return (
@@ -16,13 +16,13 @@ export default function Continents() {
       </div>
 
       <div className="grid grid-cols-3 gap-4">
-        {location.allContinents.map((continent) => (
+        {currentState.allContinents.map((continent) => (
           <div
             key={continent?.id}
             onClick={() => {
               navigate(`/${continent.name}`);
-              setLocation({
-                ...location,
+              setCurrentState({
+                ...currentState,
                 currentContinent: continent,
                 allCountries: [...continent?.countries],
               });
