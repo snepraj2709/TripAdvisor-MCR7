@@ -1,9 +1,8 @@
-import { MdLocationPin } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { useData } from "../context/DataContext";
 
 export default function DestinationDetail() {
-  const { currentState, setCurrentState } = useData();
+  const { currentState } = useData();
   const {
     name,
     image,

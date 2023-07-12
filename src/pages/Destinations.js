@@ -27,7 +27,6 @@ export default function Destinations() {
                 currentDestination: destination,
               });
             }}>
-            <p>{destination.name}</p>
             <LocationCard name={destination?.name} image={destination?.image} />
           </div>
         ))}

@@ -28,7 +28,6 @@ export default function Countries() {
                 allDestinations: [...country?.destinations],
               });
             }}>
-            <p>{country.name}</p>
             <LocationCard name={country?.name} image={country?.image} />
           </div>
         ))}
