@@ -18,12 +18,13 @@ export default function Continents() {
       <div className="grid grid-cols-3 gap-4">
         {location.allContinents.map((continent) => (
           <div
-            kay={continent?.id}
+            key={continent?.id}
             onClick={() => {
               navigate(`/${continent.name}`);
               setLocation({
                 ...location,
-                allCountries: [continent?.countries],
+                currentContinent: continent,
+                allCountries: [...continent?.countries],
               });
             }}>
             <LocationCard name={continent?.name} image={continent.image} />
